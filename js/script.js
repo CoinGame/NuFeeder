@@ -10,8 +10,8 @@ function custodianField (custodian) {
     <span class='input-group-btn'> \
       <button class='btn btn-default remove-field' type='button'>X</button> \
     </span> \
-    <input type='text' class='form-control custodian-input' placeholder='Custodians Address' value='" + custodian.address + "'> \
-    <input type='text' class='form-control custodian-input' placeholder='Grant Value' value='" + custodian.amount + "'> \
+    <input type='text' class='form-control custodian-input custodian-address' placeholder='Custodians Address' value='" + custodian.address + "'> \
+    <input type='text' class='form-control custodian-input custodian-amount' placeholder='Grant Value' value='" + custodian.amount + "'> \
   </div><!-- /input-group --> \
   "
   return field
@@ -28,7 +28,7 @@ function motionField (motion) {
     <span class='input-group-btn'> \
       <button class='btn btn-default remove-field' type='button'>X</button> \
     </span> \
-    <input type='text' class='form-control' placeholder='Motion Hash' value='" + motion + "'> \
+    <input type='text' class='form-control motion-hash' placeholder='Motion Hash' value='" + motion + "'> \
   </div> \
   "
   return field
@@ -39,9 +39,9 @@ function transactionFeeField (unit, fee) {
   var field = " \
   <div class='input-group'> \
     <span class='input-group-btn'> \
-      <button class='btn btn-default' type='button'>" + unit + "</button> \
+      <button class='btn btn-default transaction-fee-unit' type='button' value='" + unit + "'>" + unit + "</button> \
     </span> \
-    <input type='text' class='form-control' placeholder='Fee Value' value='" + fee + "'> \
+    <input type='text' class='form-control transaction-fee' placeholder='Fee Value' value='" + fee + "'> \
   </div>\
   "
   return field
@@ -53,7 +53,7 @@ function parkRateField (parkrates) {
     var custodian = {address:"", amount:""}
   }
   
-  var field = "<h2>" + parkrates.unit + "</h2>"
+  var field = "<div class=park-rate-container> <h2 class='park-rate-unit'>" + parkrates.unit + "</h2>"
   
   field +=  '<input type="button" value="Add Park Rate" class="btn btn-pri" id="addParkRate">'
   
@@ -66,11 +66,14 @@ function parkRateField (parkrates) {
       <span class='input-group-btn'> \
         <button class='btn btn-default remove-field' type='button'>X</button> \
       </span> \
-      <input type='text' class='form-control'  placeholder='Block Duration' value='" + rates.blocks + "'> \
-      <input type='text' class='form-control'  placeholder='APR Value' value='" + rates.rate + "'> \
+      <input type='text' class='form-control park-rate-block-duration'  placeholder='Block Duration' value='" + rates.blocks + "'> \
+      <input type='text' class='form-control park-rate'  placeholder='APR Value' value='" + rates.rate + "'> \
     </div> \
     "
   }
+  
+  //container ending div
+  field += "</div>"
 
   return field
 }
@@ -164,7 +167,6 @@ function parkRateField (parkrates) {
                 $(".parkrates").append(parkRateField(parkrateobj));
                 
               }
-              debugger
             }
             else {
               alert("votes.json missing")
@@ -172,6 +174,7 @@ function parkRateField (parkrates) {
           });
           
           $(".vote-fields").css('visibility', 'visible');
+          $("#save-button").css('visibility', 'visible');
         }
         else {
           alert(err.request.statusText)
@@ -179,7 +182,79 @@ function parkRateField (parkrates) {
       });
     });
     
-    $("#Save")
+    
+    /* saving the results after editing them when the user clicks save */
+    $("#save-button").click(function () {
+      
+      var username = $("#username").val();
+      var password = $("#password").val();
+      
+      var github = new Github({
+        username: username,
+        password: password,
+        auth: "basic"
+      });
+
+      var repo = github.getRepo(username, "NuFeeder");  
+      
+      var savevotes = {custodians: [],
+                   parkrates: [],
+                   motions: [],
+                   fees: {}
+                  }
+      // Get the current motions votes and add them to our new vote list              
+      $(".motions").children().each(function () { 
+                   
+        savevotes.motions.push($(this).find(".motion-hash").val())
+                  
+        });
+      
+      //get the current custodians and add them to our new vote list
+      $(".custodians").children().each(function () { 
+
+        savevotes.custodians.push( {address : $(this).find(".custodian-address").val(), amount:  parseInt($(this).find(".custodian-amount").val()) })
+
+        });
+      
+      //get the current transaction fee votes and add them to the vote list
+      $(".transactionfees").children().each(function () {
+        
+        savevotes.fees[$(this).find(".transaction-fee-unit").val()] = parseInt($(this).find(".transaction-fee").val())
+      
+        });
+      
+      //get the current park rates and add them to the vote list
+      $(".parkrates").children().each(function () {
+        
+        //the park rates object is a bit more complex. we'll set it up here first
+        rateset = {"rates": [], "unit": ""}
+
+        rateset["unit"] = $(this).find('h2').text()
+        
+        //iterate through all of the park rate input fields to generate the list
+        $(".park-rate-container").children(".input-group").each(function () {
+          
+          rateset.rates.push( {"blocks" : parseInt($(this).find(".park-rate-block-duration").val()), "rate" : parseInt($(this).find(".park-rate").val())} )
+          
+        });
+        
+        //set park rates
+        savevotes.parkrates.push( rateset )
+        
+      });
+      
+      votesJSON = JSON.stringify(savevotes, null, 2)
+      
+      repo.write('gh-pages', 'votes.json', votesJSON, 'updating votes', function(err) {
+        
+        if (err) {
+          alert(err.request.statusText)
+          return
+        }
+        
+      });
+      
+    });
     
     
     /*general page actions*/

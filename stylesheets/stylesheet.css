@@ -10,7 +10,6 @@ body {
   display: inline-block;
 }
 
-
 #save-button {
-  display: none;
+  visibility: hidden;
 }
