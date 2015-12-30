@@ -1,0 +1,16 @@
+body {
+  padding: 20px;
+}
+
+.vote-fields {
+  visibility: hidden;
+}
+
+#login {
+  display: inline-block;
+}
+
+
+#save-button {
+  display: none;
+}

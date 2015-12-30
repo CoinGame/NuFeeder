@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css">
+  <link rel="stylesheet" href="stylesheets/bootstrap.css">
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/github.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+
+  <title>Nufeeder</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <header>
+                    <h1 class="title">Nufeeder</h1>
+                </header>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group" id="login">
+                    <span class="input-group-addon" id="basic-addon1">Username</span>
+                    <input type="text" name="username" id="username" class="form-control" aria-describedby="basic-addon1">
+
+                    <span class="input-group-addon" id="basic-addon1">Password</span>
+                    <input type="password" name="password" id="password" class="form-control" aria-describedby="basic-addon1">
+                </div>
+                <input type="button" value="Load Votes" class="btn btn-pri" id="login-button">
+                <input type="button" value="Save Votes" class="btn btn-pri" id="save-button">
+            </div>
+        <div class="vote-fields">
+          <div class="col-md-6">
+            <div class="custodian-wrapper">
+              <div class="content-header">
+                <h1>Custodians</h1>
+                <input type="button" value="Add Custodian" class="btn btn-pri" id="addCustodian">
+              </div>
+              <div class="custodians votes">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="motion-wrapper">
+              <div class="content-header">
+                <h1>Motions</h1>
+                <input type="button" value="Add Motion" class="btn btn-pri" id="addMotion">
+              </div>
+              <div class="motions votes">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="transactionfees-wrapper">
+              <div class="content-header">
+                <h1>Transaction Fees</h1>
+              </div>
+              <div class="transactionfees votes">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="parkrates-wrapper">
+              <div class="content-header">
+                <h1>Park Rates</h1>
+              </div>
+              <div class="parkrates votes">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <footer>
+    </footer>
+  </div>
+</body>
+</html>
