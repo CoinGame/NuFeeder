@@ -1,66 +1,59 @@
 {
+  "custodians": [
+    {
+      "address": "B5Zi5XJ1sgS6mWGu7bWJqGVnuXwiMXi7qj",
+      "amount": 150000
+    },
+    {
+      "address": "B8DZADD7UrMkzEmTWyvn2cEoxcnog1D8MK",
+      "amount": 1350
+    },
+    {
+      "address": "BBZ4h88BwYCyE9q268LoArps6eodq9PDGH",
+      "amount": 224
+    }
+  ],
   "parkrates": [
     {
       "rates": [
         {
-          "rate": 0,
-          "blocks": 2048
+          "blocks": 2048,
+          "rate": 0
         },
         {
-          "rate": 0,
-          "blocks": 4096
+          "blocks": 4096,
+          "rate": 0
         },
         {
-          "rate": 0,
-          "blocks": 8192
+          "blocks": 8192,
+          "rate": 0
         },
         {
-          "rate": 0,
-          "blocks": 16384
+          "blocks": 16384,
+          "rate": 0
         },
         {
-          "rate": 0,
-          "blocks": 32768
+          "blocks": 32768,
+          "rate": 0
         },
         {
-          "rate": 0,
-          "blocks": 65536
+          "blocks": 65536,
+          "rate": 0
         },
         {
-          "rate": 0,
-          "blocks": 131072
+          "blocks": 131072,
+          "rate": 0
         }
       ],
       "unit": "B"
     }
   ],
-  "custodians": [
-    {
-      "amount": 150000,
-      "address": "B5Zi5XJ1sgS6mWGu7bWJqGVnuXwiMXi7qj"
-    },
-    {
-      "amount": 1350,
-      "address": "B8DZADD7UrMkzEmTWyvn2cEoxcnog1D8MK"
-    },
-    {
-      "amount": 224,
-      "address": "BBZ4h88BwYCyE9q268LoArps6eodq9PDGH"
-    }
-  ],
   "motions": [
     "f99ddf406a32d39be7d614c13dc1ce63c96e4003",
-    "cb23c76e21e6ef7a568161e817869168f5273c4f",
-    "a77de0684528b65ad0ea4105c2614e2ab49e736e",
-    "81d321bd8e2062dde016d40f7d083071e8188821",
-    "2ab1d4dff05587e496cc649c1e019fb31c546311",
-    "1f4c3c12af65629a7fdf041b5d4ae872378fc9eb",
-    "7345b8fdb4812ba346a267a1bb2bc7507e66fe75",
-    "c94cef2865a53da5dc3b92532b4dcd03775be467",
     "b1ef96aed5c7f9dec482467b254b40c82bf66d23"
   ],
   "fees": {
     "S": 100,
-    "B": 0.1
+    "B": 0
   }
 }
