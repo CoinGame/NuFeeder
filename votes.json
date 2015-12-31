@@ -3,12 +3,10 @@
   "parkrates": [
     {
       "rates": [],
-      "unit": "B"
+      "unit": ""
     }
   ],
-  "motions": [
-    "QDQWD"
-  ],
+  "motions": [],
   "fees": {
     "S": 1,
     "B": 0
