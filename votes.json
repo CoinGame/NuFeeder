@@ -13,20 +13,8 @@
     {
       "rates": [
         {
-          "blocks": 4096,
-          "rate": 0
-        },
-        {
           "blocks": 23432,
           "rate": 2342
-        },
-        {
-          "blocks": 243234,
-          "rate": 2234
-        },
-        {
-          "blocks": 234,
-          "rate": 23423
         }
       ],
       "unit": "B"
