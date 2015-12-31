@@ -6,7 +6,9 @@
       "unit": "B"
     }
   ],
-  "motions": [],
+  "motions": [
+    "QDQWD"
+  ],
   "fees": {
     "S": 1,
     "B": 0
