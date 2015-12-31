@@ -1,0 +1,14 @@
+{
+  "custodians": [],
+  "parkrates": [
+    {
+      "rates": [],
+      "unit": "B"
+    }
+  ],
+  "motions": [],
+  "fees": {
+    "S": 1,
+    "B": .01
+  }
+}
