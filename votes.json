@@ -1,10 +1,5 @@
 {
-  "custodians": [
-    {
-      "address": "wewfawe",
-      "amount": 234234
-    }
-  ],
+  "custodians": [],
   "parkrates": [
     {
       "rates": [],
