@@ -11,3 +11,7 @@ The goal of NuFeeder is to help NuShares holders manage their voting in an easie
 3. login to NuFeeder by entering your github account information.
 
 4. Set your votes and hit save to have them updated on github. 
+
+5. Get the RAW url to the votes.json file that's in the root of the reposity. It will look like `https://raw.githubusercontent.com/CoinGame/NuFeeder/gh-pages/votes.json`
+
+6. Add this URL to your Nu wallet as a datafeed.
