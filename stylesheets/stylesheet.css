@@ -1,15 +1,18 @@
 body {
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
 }
 
 .vote-fields {
   visibility: hidden;
 }
 
-#login {
-  display: inline-block;
-}
-
 #save-button {
   visibility: hidden;
+}
+
+.content-header h1 {
+  
+  display: inline-block;
 }

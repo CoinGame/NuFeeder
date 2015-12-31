@@ -53,9 +53,14 @@ function parkRateField (parkrates) {
     var custodian = {address:"", amount:""}
   }
   
-  var field = "<div class=park-rate-container> <h2 class='park-rate-unit'>" + parkrates.unit + "</h2>"
+  var field = " \
+              <div class=park-rate-container> \
+                <div class='content-header'> \
+                  <h1 class='park-rate-unit'>" + parkrates.unit + "</h1> \
+                  <input type='button' value='Add Park Rate' class='btn btn-pri' id='addParkRate'> \
+                </div> \
+              "
   
-  field +=  '<input type="button" value="Add Park Rate" class="btn btn-pri" id="addParkRate">'
   
   for (index in parkrates.rates) {
     
@@ -76,6 +81,14 @@ function parkRateField (parkrates) {
   field += "</div>"
 
   return field
+}
+
+
+//other fun things
+function alert (message, type) {
+  
+  $(".flash").text(message).fadeOut( 4000, function() {});
+  
 }
 
 
@@ -120,7 +133,7 @@ function parkRateField (parkrates) {
                 var votes = JSON.parse(data)  
               } 
               catch (err) {
-                alert(err)
+                alert("parse JSON error:" + err)
                 return
               } 
               
@@ -177,7 +190,7 @@ function parkRateField (parkrates) {
           $("#save-button").css('visibility', 'visible');
         }
         else {
-          alert(err.request.statusText)
+          alert("repo error:" + err.request.statusText)
         }
       });
     });
@@ -248,9 +261,11 @@ function parkRateField (parkrates) {
       repo.write('gh-pages', 'votes.json', votesJSON, 'updating votes', function(err) {
         
         if (err) {
-          alert(err.request.statusText)
+          alert("update repo error" + err.request.statusText)
           return
         }
+        
+        alert("Update Success", "success")
         
       });
       
