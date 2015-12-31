@@ -1,10 +1,5 @@
 {
-  "custodians": [
-    {
-      "address": "gwagwf",
-      "amount": 2341242
-    }
-  ],
+  "custodians": [],
   "parkrates": [
     {
       "rates": [],
