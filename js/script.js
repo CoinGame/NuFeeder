@@ -55,9 +55,8 @@ function parkRateField (parkrates) {
   
   var field = " \
               <div class=park-rate-container> \
+                <input type='button' value='Add Park Rate' class='btn btn-pri' id='addParkRate'> \
                 <div class='content-header'> \
-                  <h1 class='park-rate-unit'>" + parkrates.unit + "</h1> \
-                  <input type='button' value='Add Park Rate' class='btn btn-pri' id='addParkRate'> \
                 </div> \
               "
   
@@ -232,7 +231,7 @@ function alert (message, type) {
       //get the current transaction fee votes and add them to the vote list
       $(".transactionfees").children().each(function () {
         
-        savevotes.fees[$(this).find(".transaction-fee-unit").val()] = parseInt($(this).find(".transaction-fee").val())
+        savevotes.fees[$(this).find(".transaction-fee-unit").val()] = parseFloat($(this).find(".transaction-fee").val())
       
         });
       
@@ -242,7 +241,8 @@ function alert (message, type) {
         //the park rates object is a bit more complex. we'll set it up here first
         rateset = {"rates": [], "unit": ""}
 
-        rateset["unit"] = $(this).find('h2').text()
+        //todo: don't hard code this. bad bad bad!! When other units are added this will need to be handled better
+        rateset["unit"] = "B"
         
         //iterate through all of the park rate input fields to generate the list
         $(".park-rate-container").children(".input-group").each(function () {
@@ -296,8 +296,8 @@ function alert (message, type) {
       <span class='input-group-btn'> \
         <button class='btn btn-default remove-field' type='button'>X</button> \
       </span> \
-      <input type='text' class='form-control'  placeholder='Block Duration' value=''> \
-      <input type='text' class='form-control'  placeholder='APR Value' value=''> \
+      <input type='text' class='form-control park-rate-block-duration'  placeholder='Block Duration' value=''> \
+      <input type='text' class='form-control park-rate'  placeholder='APR Value' value=''> \
     </div> \
     ");
     });
