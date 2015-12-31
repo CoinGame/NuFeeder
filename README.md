@@ -6,7 +6,7 @@ The goal of NuFeeder is to help NuShares holders manage their voting in an easie
 
 1. Fork this repository to your own github account
 
-2. Check that a github page was created for the forked repo (sometimes can take a few minutes after forking) http://<YOUR-USERNAME>.github.io/NuFeeder
+2. Check that a github page was created for the forked repo (sometimes can take a few minutes after forking) `http://<YOUR-USERNAME>.github.io/NuFeeder`
 
 3. login to NuFeeder by entering your github account information.
 
