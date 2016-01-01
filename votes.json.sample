@@ -13,10 +13,6 @@
     {
       "rates": [
         {
-          "blocks": 2048,
-          "rate": 0
-        },
-        {
           "blocks": 4096,
           "rate": 0
         },

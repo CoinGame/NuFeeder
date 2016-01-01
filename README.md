@@ -6,12 +6,14 @@ The goal of NuFeeder is to help NuShares holders manage their voting in an easie
 
 1. Fork this repository to your own github account
 
-2. Check that a github page was created for the forked repo (sometimes can take a few minutes after forking) `http://<YOUR-USERNAME>.github.io/NuFeeder`
+1. delete the delete.me file in the root of the repo. A push to the repo is required to trigger the github pages generation after it is forked. Deleting this file will trigger the page rendering. Only needs to be performed the first time.
 
-3. login to NuFeeder by entering your github account information.
+1. Check that a github page was created for the forked repo (sometimes can take a few minutes after forking) `http://<YOUR-USERNAME>.github.io/NuFeeder`
 
-4. Set your votes and hit save to have them updated on github. 
+1. login to NuFeeder by entering your github account information.
 
-5. Get the RAW url to the votes.json file that's in the root of the reposity. It will look like `https://raw.githubusercontent.com/CoinGame/NuFeeder/gh-pages/votes.json`
+1. Set your votes and hit save to have them updated on github. 
 
-6. Add this URL to your Nu wallet as a datafeed.
+1. Get the RAW url to the votes.json file that's in the root of the reposity. It will look like `https://raw.githubusercontent.com/CoinGame/NuFeeder/gh-pages/votes.json`
+
+1. Add this URL to your Nu wallet as a datafeed.
