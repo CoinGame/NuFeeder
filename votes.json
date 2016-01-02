@@ -1,44 +1,12 @@
 {
-  "custodians": [
-    {
-      "address": "223423",
-      "amount": 234324
-    },
-    {
-      "address": "345345",
-      "amount": null
-    }
-  ],
+  "custodians": [],
   "parkrates": [
     {
-      "rates": [
-        {
-          "blocks": null,
-          "rate": null
-        },
-        {
-          "blocks": null,
-          "rate": null
-        },
-        {
-          "blocks": null,
-          "rate": null
-        },
-        {
-          "blocks": null,
-          "rate": null
-        }
-      ],
+      "rates": [],
       "unit": "B"
     }
   ],
-  "motions": [
-    "awefwefwe",
-    "wfwef",
-    "wafwaefew",
-    "wafwefew",
-    "awfewfw"
-  ],
+  "motions": [],
   "fees": {
     "S": 1,
     "B": 0.01
