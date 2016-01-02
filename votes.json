@@ -1,0 +1,26 @@
+{
+  "custodians": [
+    {
+      "address": "wefwa",
+      "amount": 42343
+    }
+  ],
+  "parkrates": [
+    {
+      "rates": [
+        {
+          "blocks": null,
+          "rate": null
+        }
+      ],
+      "unit": "B"
+    }
+  ],
+  "motions": [
+    "wefawfwfw"
+  ],
+  "fees": {
+    "S": 4,
+    "B": 0.01
+  }
+}
