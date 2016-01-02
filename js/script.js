@@ -105,7 +105,7 @@ function parkRateField (parkrates) {
 //other fun things
 function alert (message, type) {
   $(".flash").empty()
-  $(".flash").append("<div class='"+type + " " + "alert-" + type + "'>" + message + "</div>").fadeOut( 5000, function() {});
+  $(".flash").fadeIn().append("<div class='"+type + " " + "alert-" + type + "'>" + message + "</div>").fadeOut( 5000, function() {});
 }
 
 
