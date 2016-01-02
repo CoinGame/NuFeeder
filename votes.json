@@ -1,0 +1,23 @@
+{
+  "custodians": [
+    {
+      "address": "awefaewf",
+      "amount": 234234
+    },
+    {
+      "address": "grafweafw",
+      "amount": 234234
+    }
+  ],
+  "parkrates": [
+    {
+      "rates": [],
+      "unit": "B"
+    }
+  ],
+  "motions": [],
+  "fees": {
+    "S": 1,
+    "B": 0.01
+  }
+}
