@@ -1,3 +1,22 @@
+
+var baseVote = {
+  "custodians": [],
+  "parkrates": [
+    {
+      "rates": [],
+      "unit": "B"
+    }
+  ],
+  "motions": [],
+  "fees": {
+    "S": 1,
+    "B": 0.01
+  }
+}
+
+var ghbranch = "gh-pages"
+var repoName = "NuFeeder"
+
 //Functions to generate pre-formed fields for displaying and entering voting data
 function custodianField (custodian) {
   
@@ -85,14 +104,21 @@ function parkRateField (parkrates) {
 
 //other fun things
 function alert (message, type) {
-  
-  $(".flash").text(message).fadeOut( 4000, function() {});
-  
+  $(".flash").empty()
+  $(".flash").append("<div class='"+type + " " + "alert-" + type + "'>" + message + "</div>").fadeOut( 5000, function() {});
 }
 
 
 (function ($) {
   $(document).ready(function () {
+
+    //development checker
+    $("input[name='development']").change(function () {
+      if (this.checked) {
+        ghbranch = "development"
+      } else { ghbranch = "gh-pages"}
+
+    });
 
     //when the user clicks login try to get the coting data from their repo and display it on the page
     $("#login-button").click(function () { 
@@ -119,70 +145,70 @@ function alert (message, type) {
         auth: "basic"
       });
 
-      var repo = github.getRepo(username, "NuFeeder");  
+      var repo = github.getRepo(username, repoName);  
 
       repo.show(function(err, repojson) {
         //check to see if we found the NuFeeder repo, else alert with the error message
         if (repojson) {
           //get the voting data from votes.json, else alert the user if the files doesn't exist
-          repo.read('gh-pages', 'votes.json', function(err, data) {
-            if (data) {
-              //try to parse the voting data, alert the user of errors if it doesn't parse
-              try {
-                var votes = JSON.parse(data)  
-              } 
-              catch (err) {
-                alert("parse JSON error:" + err)
-                return
-              } 
-              
-              //made it inside, lets hide the login page
-              $("#login").hide()
-              
-              /* custodians */
-              //make sure custodians container is clear
-              $(".custodians").empty()
-              
-              //parse and display custodians fields
-              for (index in votes.custodians) {
-                custodian = votes.custodians[index]
-                $(".custodians").append(custodianField(custodian));
-              }
-              
-              /* motions */
-              //make sure motions container is clear
-              $(".motions").empty()
-              
-              //parse and display motion fields
-              for (index in votes.motions) {
-                motion = votes.motions[index]
-                $(".motions").append(motionField(motion))
-              }
-              
-              /*transaction fees */
-              //make sure transacton fees container is clear
-              $(".transactionfees").empty()
-              
-              //parse and display transaction fee fields
-              for (unit in votes.fees) {
-                fee = votes.fees[unit]
-                $(".transactionfees").append(transactionFeeField(unit, fee))
-              }
-              
-              /* park rates */
-              //make sure park rates container is clear
-              $(".parkrates").empty()
-              
-              for (index in votes.parkrates) {
-                parkrateobj = votes.parkrates[index]
-                
-                $(".parkrates").append(parkRateField(parkrateobj));
-                
-              }
+          repo.read(ghbranch, 'votes.json', function(err, data) {
+
+            try {
+              var votes = JSON.parse(data)  
+            } 
+            catch (err) {
+              alert("parse JSON error:" + err)
+              return
+            } 
+            
+            //if we don't find a votes.json file we'll load up the base voting template
+            if (err) {votes = baseVote}  
+            
+            //made it inside, lets hide the login page
+            $(".login").hide()
+
+            /* custodians */
+            //make sure custodians container is clear
+            $(".custodians").empty()
+
+            //parse and display custodians fields
+            for (index in votes.custodians) {
+              custodian = votes.custodians[index]
+              $(".custodians").append(custodianField(custodian));
             }
-            else {
-              alert("votes.json missing")
+            
+            /* motions */
+            //make sure motions container is clear
+            $(".motions").empty()
+
+            //parse and display motion fields
+            for (index in votes.motions) {
+              motion = votes.motions[index]
+              $(".motions").append(motionField(motion))
             }
+
+            /*transaction fees */
+            //make sure transacton fees container is clear
+            $(".transactionfees").empty()
+
+            //parse and display transaction fee fields
+
+            for (unit in votes.fees) {
+              fee = votes.fees[unit]
+              $(".transactionfees").append(transactionFeeField(unit, fee))
+            }
+
+            /* park rates */
+            //make sure park rates container is clear
+            $(".parkrates").empty()
+
+            for (index in votes.parkrates) {
+              parkrateobj = votes.parkrates[index]
+
+              $(".parkrates").append(parkRateField(parkrateobj));
+
+            }
+
           });
           
           $(".vote-fields").css('visibility', 'visible');
@@ -207,7 +233,7 @@ function alert (message, type) {
         auth: "basic"
       });
 
-      var repo = github.getRepo(username, "NuFeeder");  
+      var repo = github.getRepo(username, repoName);  
       
       var savevotes = {custodians: [],
                    parkrates: [],
@@ -258,7 +284,8 @@ function alert (message, type) {
       
       votesJSON = JSON.stringify(savevotes, null, 2)
       
-      repo.write('gh-pages', 'votes.json', votesJSON, 'updating votes', function(err) {
+      
+      repo.write(ghbranch, 'votes.json', votesJSON, 'updating votes', function(err) {
         
         if (err) {
           alert("update repo error" + err.request.statusText)

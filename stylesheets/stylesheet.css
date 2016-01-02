@@ -12,6 +12,12 @@ body {
   visibility: hidden;
 }
 
+.content-header {
+  
+  margin: 5px;
+  margin-top: 10px;
+}
+
 .content-header h1 {
   
   display: inline-block;
@@ -21,4 +27,9 @@ body {
 .input-group {
   
   padding: 8px;
+}
+
+.success {
+  padding: 5px;
+  text-align: center;
 }
