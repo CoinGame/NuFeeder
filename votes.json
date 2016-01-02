@@ -7,12 +7,7 @@
   ],
   "parkrates": [
     {
-      "rates": [
-        {
-          "blocks": null,
-          "rate": null
-        }
-      ],
+      "rates": [],
       "unit": "B"
     }
   ],
