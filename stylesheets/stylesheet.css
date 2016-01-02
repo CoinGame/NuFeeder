@@ -29,7 +29,10 @@ body {
   padding: 8px;
 }
 
-.success {
-  padding: 5px;
+.flash {
   text-align: center;
+}
+
+.alert {
+  padding: 3px !important;
 }

@@ -103,9 +103,9 @@ function parkRateField (parkrates) {
 
 
 //other fun things
-function alert (message, type) {
+function flash (message, type) {
   $(".flash").empty()
-  $(".flash").fadeIn().append("<div class='"+type + " " + "alert-" + type + "'>" + message + "</div>").fadeOut( 5000, function() {});
+  $(".flash").fadeIn().append("<div class='alert "+type + " " + "alert-" + type + "'>" + message + "</div>").fadeOut( 5000, function() {});
 }
 
 
@@ -127,7 +127,7 @@ function alert (message, type) {
       if ($("#username").val().length > 0) {
         var username = $("#username").val();
       } else {
-        alert("Please enter your username before trying to login");
+        flash("Please enter your username before trying to login", "danger");
         return;
       }
 
@@ -135,7 +135,7 @@ function alert (message, type) {
       if ($("#password").val().length > 0) {
         var password = $("#password").val();
       } else {
-        alert("Please enter your password before trying to login");
+        flash("Please enter your password before trying to login", "danger");
         return
       }
       
@@ -157,7 +157,7 @@ function alert (message, type) {
               var votes = JSON.parse(data)  
             } 
             catch (err) {
-              alert("parse JSON error:" + err)
+              flash("parse JSON error:" + err, "danger")
               return
             } 
             
@@ -215,7 +215,7 @@ function alert (message, type) {
           $("#save-button").css('visibility', 'visible');
         }
         else {
-          alert("repo error:" + err.request.statusText)
+          flash("repo error: " + err.request.statusText, "danger")
         }
       });
     });
@@ -288,11 +288,11 @@ function alert (message, type) {
       repo.write(ghbranch, 'votes.json', votesJSON, 'updating votes', function(err) {
         
         if (err) {
-          alert("update repo error" + err.request.statusText)
+          flash("update repo error" + err.request.statusText, "danger")
           return
         }
         
-        alert("Update Success", "success")
+        flash("Update Success", "success")
         
       });
       
