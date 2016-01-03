@@ -162,7 +162,7 @@ function flash (message, type) {
         //check to see if we found the NuFeeder repo, else alert with the error message
         if (repojson) {
           //get the voting data from votes.json, else alert the user if the files doesn't exist
-          repo.read(ghbranch, 'votes.json', function(err, data) {
+          repo.read(ghbranch, '_data/votes.json', function(err, data) {
 
             try {
               var votes = JSON.parse(data)  
@@ -296,7 +296,7 @@ function flash (message, type) {
       votesJSON = JSON.stringify(savevotes, null, 2)
       
       
-      repo.write(ghbranch, 'votes.json', votesJSON, 'updating votes', function(err) {
+      repo.write(ghbranch, '_data/votes.json', votesJSON, 'updating votes', function(err) {
         
         if (err) {
           flash("update repo error" + err.request.statusText, "danger")
