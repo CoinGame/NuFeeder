@@ -17,6 +17,14 @@ var baseVote = {
 var ghbranch = "gh-pages"
 var repoName = "NuFeeder"
 
+// general functions to do stuff
+
+$.fn.digits = function(){ 
+    return this.each(function(){ 
+        $(this).text( $(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") ); 
+    })
+}
+
 //Functions to generate pre-formed fields for displaying and entering voting data
 function custodianField (custodian) {
   
@@ -119,7 +127,10 @@ function flash (message, type) {
       } else { ghbranch = "gh-pages"}
 
     });
-
+    
+    //Add commas to custodian amounts
+    $("span.amount").digits()
+    
     //when the user clicks login try to get the coting data from their repo and display it on the page
     $("#login-button").click(function () { 
 

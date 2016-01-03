@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+{% include head.html %}
+  
+<body>
+  <div class="wrapper">
+    <div class="container-fluid">
+      
+      {% include header.html %}
+      
+      {% include nav.html %}
+      
+      {% include flash.html %}
+      
+      {% include primary_actions.html %}
+      
+      {{ page.content }}
+
+    </div>                  
+  </div>
+</body>
+</html>

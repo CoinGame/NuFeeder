@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+{% include head.html %}
+  
+<body>
+  <div class="wrapper">
+    <div class="container-fluid">
+      
+      {% include header.html %}
+      
+      {% include nav.html %}
+      
+      {% include flash.html %}
+      
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="motion-status status">
+              <h2>Motions</h2>
+              <table>
+                <tr>
+                  <th>Hash (RIPEMD-160)</th>
+                </tr>
+                
+              {% for motion in site.data.votes.motions %}
+                <tr>
+                  <td>
+                  {{ motion }}
+                  </td>
+                </tr>
+              {% endfor %}
+              </table>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="custodian-status status">
+              <h2>Custodians</h2>
+              <table>
+                <tr>
+                  <th>Address</th>
+                  <th>Amount</th>
+                </tr>
+              {% for custodian in site.data.votes.custodians %}
+                <tr>
+                  <td>{{ custodian.address }}</td>
+                  <td><span class="amount">{{ custodian.amount }}</span></td>
+                </tr>
+              {% endfor %}
+              </table>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="fee-status status">
+              <h2>Fees</h2>
+              <table>
+                <tr>
+                  <th>Unit</th>
+                  <th>APR</th>
+                </tr>
+              {% for fee in site.data.votes.fees %}
+                <tr>
+                  <td>{{ fee[0] }}</td>
+                  <td>{{ fee[1] }}</td>
+                </tr>
+              {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="rates-status status">
+              <h2>Park Rates</h2>
+              <ul>
+              {% for rates in site.data.votes.parkrates %}
+                  <table class="datagrid">
+                    <tr>
+                      <th>Unit</th>
+                      <th>Blocks</th>
+                      <th>APR</th>
+                    </tr>
+                    {% for rate in rates.rates %}
+                    <tr>
+                      <td>{{ rates.unit }}</td>
+                      <td>{{ rate.blocks }}</td> 
+                      <td>{{ rate.rate }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                  </table>
+              {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>                  
+  </div>
+</body>
+</html>
