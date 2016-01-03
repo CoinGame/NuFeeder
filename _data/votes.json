@@ -1,40 +1,14 @@
 {
-  "custodians": [
-    {
-      "address": "B5Zi5XJ1sgS6mWGu7bWJqGVnuXwiMXi7qj",
-      "amount": 150000
-    },
-    {
-      "address": "BBZ4h88BwYCyE9q268LoArps6eodq9PDGH",
-      "amount": 224
-    }
-  ],
+  "custodians": [],
   "parkrates": [
     {
-      "rates": [
-        {
-          "blocks": 4096,
-          "rate": 0
-        },
-        {
-          "blocks": 65536,
-          "rate": 0
-        },
-        {
-          "blocks": 131072,
-          "rate": 0
-        }
-      ],
+      "rates": [],
       "unit": "B"
     }
   ],
-  "motions": [
-    "f99ddf406a32d39be7d614c13dc1ce63c96e4003",
-    "b1ef96aed5c7f9dec482467b254b40c82bf66d23",
-    "safwefwfwefwf"
-  ],
+  "motions": [],
   "fees": {
-    "S": 0.05,
-    "B": 5
+    "S": 1,
+    "B": 0.01
   }
 }
