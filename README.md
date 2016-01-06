@@ -17,3 +17,16 @@ The goal of NuFeeder is to help NuShares holders manage their voting in an easie
 1. Get the RAW url to the votes.json file that's in the root of the reposity. It will look like `https://raw.githubusercontent.com/CoinGame/NuFeeder/gh-pages/_data/votes.json`
 
 1. Add this URL to your Nu wallet as a datafeed.
+
+## Updating your branch with latest changes
+for those that already forked it's fairly simple to update with my repo. go to your repo page:
+
+`http://github.com/<your-username>/NuFeeder`
+
+then add `/compare/gh-pages...CoinGame:gh-pages` to the end of the url:
+
+`http://github.com/<your-username>/NuFeeder/compare/gh-pages...CoinGame:gh-pages`
+
+Click the "create pull request" button (give it a title if you need to) then just merge the pull request into your repo. That will update your gh-pages branch with my latest gh-pages branch. The voting data shouldn't be affected, but you can see if it is in the pull request.
+
+
