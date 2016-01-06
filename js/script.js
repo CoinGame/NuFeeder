@@ -261,7 +261,7 @@ function flash (message, type) {
       //get the current custodians and add them to our new vote list
       $(".custodians").children().each(function () { 
 
-        savevotes.custodians.push( {address : $(this).find(".custodian-address").val(), amount:  parseInt($(this).find(".custodian-amount").val()) })
+        savevotes.custodians.push( {address : $(this).find(".custodian-address").val(), amount:  parseFloat($(this).find(".custodian-amount").val()) })
 
         });
       
@@ -284,7 +284,7 @@ function flash (message, type) {
         //iterate through all of the park rate input fields to generate the list
         $(".park-rate-container").children(".input-group").each(function () {
           
-          rateset.rates.push( {"blocks" : parseInt($(this).find(".park-rate-block-duration").val()), "rate" : parseInt($(this).find(".park-rate").val())} )
+          rateset.rates.push( {"blocks" : parseInt($(this).find(".park-rate-block-duration").val()), "rate" : parseFloat($(this).find(".park-rate").val())} )
           
         });
         
